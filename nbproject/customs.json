@@ -1,0 +1,8 @@
+{
+    "elements": {
+        "cabecalho": {},
+        "botao-adicionar": {},
+        "ng-view": {}
+    },
+    "attributes": {}
+}

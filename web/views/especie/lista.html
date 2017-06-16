@@ -1,0 +1,39 @@
+<cabecalho data-title="Especies"></cabecalho>
+
+<div class="card">
+    <h4 class="card-primary-title">Especies</h4>
+    <div class="row">
+        <div class="input-field col s12">
+            <input id="FiltroEspecieNome" type="text" data-ng-model="especieVm.filtro.nome" />
+            <label for="FiltroEspecieNome">Nome</label>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <table class="bordered striped">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>ProfundidadeMinima</th>
+                <th>ProfundidadeMaxima</th>
+                <th class="right-align">Opções</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-ng-repeat="especie in especieVm.especies | filter: especieVm.filtro | orderBy: 'Nome'">                
+                <td>{{especie.nome}}</td>
+                <td>{{especie.profundidadeMinima}}</td>
+                <td>{{especie.profundidadeMaxima}}</td>
+                <td class="right-align">
+                    <i class="material-icons icon red-icon" title="Remover" data-ng-click="especieVm.remover(especie)">delete</i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Botão Adicionar -->
+<div class="add-btn">
+    <a href="#!/especies/cadastro" class="btn-floating btn-large waves-effect waves-light"> <i class="material-icons">add</i> </a>
+</div>

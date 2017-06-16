@@ -6,11 +6,45 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Mapa de Bordo</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <!--Import Google Icon Font-->
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!-- JQuery -->
+        <script type="text/javascript" src="content/vendors/jquery/jquery.min.js"></script>
+        <!-- Angular -->
+        <script type="text/javascript" src="content/vendors/angular/angular.min.js"></script>
+        <script type="text/javascript" src="content/vendors/angular/angular-route.min.js"></script>
+        <!-- Materialize -->
+        <script type="text/javascript" src="content/vendors/materialize/js/materialize.min.js"></script>
+        <link rel="stylesheet" href="content/vendors/materialize/css/materialize.min.css" />
+        <!-- Aplicacao -->
+        <link rel="stylesheet" href="content/styles/index.css" />
+        <script type="text/javascript" src="content/scripts/Module.js"></script>
+        <script type="text/javascript" src="views/especie/EspecieController.js"></script>
+        
+        <script type="text/javascript" src="content/scripts/directives/HeaderDirective.js"></script>
+        <script type="text/javascript" src="content/scripts/directives/MaskDirective.js"></script>
     </head>
-    <body>
-        <div>TODO write content</div>
+    <body data-ng-app="MapaDeBordo">
+        <header>
+            <ul id="nav-mobile" class="side-nav fixed">
+                <li class="side-nav-header">
+                    <div class="userView">
+                        <div class="background side-nav-background">
+                            <img src="content/images/side-nav-background.jpg">
+                        </div>
+                    </div>
+                </li>
+                <li><a href="#!/especies">Especies</a></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </header>
+        <main data-ng-view>
+            
+        </main>
     </body>
 </html>
