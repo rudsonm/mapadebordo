@@ -12,20 +12,22 @@ and open the template in the editor.
         <!--Import Google Icon Font-->
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!-- JQuery -->
-        <script type="text/javascript" src="content/vendors/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="vendors/jquery/jquery.min.js"></script>
         <!-- Angular -->
-        <script type="text/javascript" src="content/vendors/angular/angular.min.js"></script>
-        <script type="text/javascript" src="content/vendors/angular/angular-route.min.js"></script>
+        <script type="text/javascript" src="vendors/angular/angular.min.js"></script>
+        <script type="text/javascript" src="vendors/angular/angular-route.min.js"></script>
         <!-- Materialize -->
-        <script type="text/javascript" src="content/vendors/materialize/js/materialize.min.js"></script>
-        <link rel="stylesheet" href="content/vendors/materialize/css/materialize.min.css" />
-        <!-- Aplicacao -->
+        <script type="text/javascript" src="vendors/materialize/js/materialize.min.js"></script>
+        <link rel="stylesheet" href="vendors/materialize/css/materialize.min.css" />
+        <!-- Aplicaçao -->
         <link rel="stylesheet" href="content/styles/index.css" />
         <script type="text/javascript" src="content/scripts/Module.js"></script>
-        
+        <!-- Controllers -->
         <script type="text/javascript" src="content/scripts/controllers/EspecieController.js"></script>
         <script type="text/javascript" src="content/scripts/controllers/EmbarcacaoController.js"></script>
-        
+        <script type="text/javascript" src="content/scripts/controllers/PortoController.js"></script>
+        <script type="text/javascript" src="content/scripts/controllers/ViagemController.js"></script>
+        <!-- Directives -->
         <script type="text/javascript" src="content/scripts/directives/HeaderDirective.js"></script>
         <script type="text/javascript" src="content/scripts/directives/MaskDirective.js"></script>
     </head>
@@ -41,8 +43,8 @@ and open the template in the editor.
                 </li>
                 <li><a href="#!/especies">Especies</a></li>
                 <li><a href='#!/embarcacoes'>Embarcaçoes</a></li>
-                <li></li>
-                <li></li>
+                <li><a href="#!/portos">Portos</a></li>
+                <li><a href="#!/viagens">Viagens</a></li>
             </ul>
         </header>
         <main data-ng-view>
