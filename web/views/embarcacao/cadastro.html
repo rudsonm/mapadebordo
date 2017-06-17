@@ -1,16 +1,27 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<cabecalho data-title="Embarcaçoes"></cabecalho>
+
+<div class="card">
+    <form id="form-categoria">
+        <h4 class="card-primary-title">
+            <span>Cadastrar Embarcacao</span>
+        </h4>
+        <div class="row">
+            <div class="input-field col s12 m6">
+                <input id="EmbarcacaoNome" type="text" data-ng-model="embarcacaoVm.embarcacao.nome" />
+                <label for="EmbarcacaoNome">Nome</label>
+            </div>
+            <div class="input-field col s12 m6">
+                <input id="EmbarcacaoTamanho" type="number" data-ng-model="embarcacaoVm.embarcacao.tamanho" />
+                <label for="EmbarcacaoTamanho">Tamanho</label>
+            </div>   
+        </div>
+        <div class="end-card right-align">
+            <a class="btn-flat" data-ng-click="embarcacaoVm.salvar(embarcacaoVm.embarcacao)">Salvar</a>
+        </div>
+    </form>
+</div>
+
+<!-- Botão Voltar -->
+<div class="bck-btn">
+    <a href="#!/embarcacoes" class="btn-floating btn-medium waves-effect waves-light"> <i class="material-icons">arrow_back</i> </a>
+</div>

@@ -15,13 +15,13 @@
         <thead>
             <tr>
                 <th>Nome</th>
-                <th>ProfundidadeMinima</th>
-                <th>ProfundidadeMaxima</th>
+                <th>Profundidade Minima</th>
+                <th>Profundidade Maxima</th>
                 <th class="right-align">Opções</th>
             </tr>
         </thead>
         <tbody>
-            <tr data-ng-repeat="especie in especieVm.especies | filter: especieVm.filtro | orderBy: 'Nome'">                
+            <tr data-ng-repeat="especie in especieVm.especies | filter: especieVm.filtro | orderBy: 'nome'">
                 <td>{{especie.nome}}</td>
                 <td>{{especie.profundidadeMinima}}</td>
                 <td>{{especie.profundidadeMaxima}}</td>

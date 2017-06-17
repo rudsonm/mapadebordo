@@ -43,6 +43,10 @@ header, main {
     color: #42A5F5;
 }
 
+.blue {
+    background-color: #0d47a1 !important;
+}
+
 .add-btn {
     bottom: 45px;
     right: 24px;
@@ -58,7 +62,7 @@ header, main {
 }
 
 .bck-btn a, .bck-btn a:hover {
-    background-color: #F5F5F5;    
+    background-color: #F5F5F5;
 }
 
 .bck-btn i {
@@ -164,26 +168,26 @@ form h3:first-child {
 }
 
 .tabs .tab a:hover, .tabs .tab a.active, .tabs .tab a {
-    color: #2196f3;
+    color: #0d47a1;
 }
 
 .tabs .indicator {
-    background-color: #2196f3;
+    background-color: #0d47a1;
 }
 
 .dropdown-content li > a, .dropdown-content li > span {
-    color: #2196F3;
+    color: #0d47a1;
 }
 
 .add-btn a, add-btn a:hover {
-    background-color: #f39c12 !important;
+    background-color: #00897b !important;
 }
 
 input:focus:not([type]):not([readonly]) + label, input[type="text"]:focus:not([readonly]) + label, input[type="password"]:focus:not([readonly]) + label, input[type="email"]:focus:not([readonly]) + label, input[type="url"]:focus:not([readonly]) + label, input[type="time"]:focus:not([readonly]) + label, input[type="date"]:focus:not([readonly]) + label, input[type="datetime"]:focus:not([readonly]) + label, input[type="datetime-local"]:focus:not([readonly]) + label, input[type="tel"]:focus:not([readonly]) + label, input[type="number"]:focus:not([readonly]) + label, input[type="search"]:focus:not([readonly]) + label, textarea.materialize-textarea:focus:not([readonly]) + label {
-    color: #2196F3;
+    color: #0d47a1;
 }
 
 input:focus:not([type]):not([readonly]), input[type="text"]:focus:not([readonly]), input[type="password"]:focus:not([readonly]), input[type="email"]:focus:not([readonly]), input[type="url"]:focus:not([readonly]), input[type="time"]:focus:not([readonly]), input[type="date"]:focus:not([readonly]), input[type="datetime"]:focus:not([readonly]), input[type="datetime-local"]:focus:not([readonly]), input[type="tel"]:focus:not([readonly]), input[type="number"]:focus:not([readonly]), input[type="search"]:focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly])  {
-    border-bottom: 1px solid #2196F3;
-    box-shadow: 0 1px 0 0 #2196F3;
+    border-bottom: 1px solid #0d47a1;
+    box-shadow: 0 1px 0 0 #0d47a1;
 }

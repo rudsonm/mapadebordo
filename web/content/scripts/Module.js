@@ -13,6 +13,16 @@
             controller: "EspecieController",
             controllerAs: "especieVm"
         })
+        .when("/embarcacoes", {
+            templateUrl: "views/embarcacao/lista.html",
+            controller: "EmbarcacaoController",
+            controllerAs: "embarcacaoVm"
+        })
+        .when("/embarcacoes/cadastro", {
+            templateUrl: "views/embarcacao/cadastro.html",
+            controller: "EmbarcacaoController",
+            controllerAs: "embarcacaoVm"
+        })
         .otherwise({
             redirectTo: "/especies"
         });
