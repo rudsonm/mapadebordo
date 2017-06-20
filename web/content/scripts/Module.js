@@ -44,11 +44,8 @@
             controllerAs: "viagemVm"
         })
         .otherwise({
-            redirectTo: "/especies"
+            redirectTo: "/viagens"
         });
     });
     
-    $(document).ready(function () {
-        $(".button-collapse").sideNav();
-    });
 })();

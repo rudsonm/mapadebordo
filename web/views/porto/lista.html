@@ -1,16 +1,41 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<cabecalho data-title="Porto"></cabecalho>
+<div class="row">
+    <div class="col s12">
+        <div class="card">
+            <h4 class="card-primary-title">Porto</h4>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="FiltroPortoNome" type="text" data-ng-model="portoVm.filtro.nome" />
+                    <label for="FiltroPortoNome">Nome</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" data-ng-show="portoVm.portos.length">
+            <table class="bordered striped">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Administração</th>
+                        <th>Ano de Fundação</th>
+                        <th class="right-align">Opções</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-ng-repeat="porto in portoVm.portos| filter: portoVm.filtro.nome | orderBy: 'nome'">
+                        <td>{{porto.nome}}</td>
+                        <td>{{porto.administracao}}</td>
+                        <td>{{porto.anoFundacao}}</td>
+                        <td class="right-align">
+                            <i class="material-icons icon red-icon" title="Remover" data-ng-click="portoVm.remover(porto)">delete</i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Botão Adicionar -->
+<div class="add-btn">
+    <a href="#!/portos/cadastro" class="btn-floating btn-large waves-effect waves-light"> <i class="material-icons">add</i> </a>
+</div>

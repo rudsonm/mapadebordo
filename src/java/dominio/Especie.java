@@ -22,6 +22,10 @@ public class Especie {
         this.profundidadeMaxima = profundidadeMaxima;
     }
 
+    public Especie() {
+        
+    }
+
     public int getId() {
         return id;
     }

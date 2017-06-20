@@ -1,44 +1,46 @@
 <cabecalho data-title="Embarcaçoes" />
+<div class="row">
+    <div class="col s12">
+        <div class="card">
+            <h4 class="card-primary-title">Embarcaçoes</h4>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="FiltroEmbarcacaoNome" type="text" data-ng-model="especieVm.filtro.nome" />
+                    <label for="FiltroEmbarcacaoNome">Nome</label>
+                </div>
+                <div class="input-field col s12 m6">
+                    <input id="FiltroEmbarcacaoTamanhoMinimo" type="number" data-ng-model="especieVm.filtro.minimo" />
+                    <label for="FiltroEmbarcacaoTamanhoMinimo">Tamanho Minimo</label>
+                </div>
+                <div class="input-field col s12 m6">
+                    <input id="FiltroEmbarcacaoTamanhoMaximo" type="number" data-ng-model="especieVm.filtro.maximo" />
+                    <label for="FiltroEmbarcacaoTamanhoMinimo">Tamanho Maximo</label>
+                </div>
+            </div>
+        </div>
 
-<div class="card">
-    <h4 class="card-primary-title">Embarcaçoes</h4>
-    <div class="row">
-        <div class="input-field col s12">
-            <input id="FiltroEmbarcacaoNome" type="text" data-ng-model="especieVm.filtro.nome" />
-            <label for="FiltroEmbarcacaoNome">Nome</label>
-        </div>
-        <div class="input-field col s12 m6">
-            <input id="FiltroEmbarcacaoTamanhoMinimo" type="number" data-ng-model="especieVm.filtro.minimo" />
-            <label for="FiltroEmbarcacaoTamanhoMinimo">Tamanho Minimo</label>
-        </div>
-        <div class="input-field col s12 m6">
-            <input id="FiltroEmbarcacaoTamanhoMaximo" type="number" data-ng-model="especieVm.filtro.maximo" />
-            <label for="FiltroEmbarcacaoTamanhoMinimo">Tamanho Maximo</label>
+        <div class="card" data-ng-show="embarcacaoVm.embarcacoes.length">
+            <table class="bordered striped">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Tamanho</th>
+                        <th class="right-align">Opções</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-ng-repeat="embarcacao in embarcacaoVm.embarcacoes| filter: embarcacaoVm.filtro | orderBy: 'nome'">
+                        <td>{{embarcacao.nome}}</td>
+                        <td>{{embarcacao.tamanho}}</td>
+                        <td class="right-align">
+                            <i class="material-icons icon red-icon" title="Remover" data-ng-click="embarcacaoVm.remover(embarcacao)">delete</i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
-
-<div class="card">
-    <table class="bordered striped">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Tamanho</th>
-                <th class="right-align">Opções</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr data-ng-repeat="embarcacao in embarcacaoVm.embarcacoes | filter: embarcacaoVm.filtro | orderBy: 'nome'">
-                <td>{{embarcacao.nome}}</td>
-                <td>{{embarcacao.tamanho}}</td>
-                <td class="right-align">
-                    <i class="material-icons icon red-icon" title="Remover" data-ng-click="embarcacaoVm.remover(embarcacao)">delete</i>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
 <!-- Botão Adicionar -->
 <div class="add-btn">
     <a href="#!/embarcacoes/cadastro" class="btn-floating btn-large waves-effect waves-light"> <i class="material-icons">add</i> </a>

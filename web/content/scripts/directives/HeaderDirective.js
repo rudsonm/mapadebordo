@@ -5,5 +5,5 @@ angular.module("MapaDeBordo").directive('cabecalho', function() {
             title: '@'
         },
         templateUrl: 'views/shared/header.html'
-    }
+    };
 });
