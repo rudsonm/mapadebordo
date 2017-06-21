@@ -14,9 +14,9 @@ import java.sql.SQLException;
  * @author julio
  */
 public class Conexao {
-    private String url = "jdbc:postgresql://localhost:5432";
-    private String usuario = "postgres";
-    private String senha = "123456";
+    private final String url = "jdbc:postgresql://localhost:5432";
+    private final String usuario = "postgres";
+    private final String senha = "123456";
     private Connection conexao = null;
     
     public Conexao() throws ClassNotFoundException {

@@ -1,16 +1,34 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<cabecalho data-title="Porto"></cabecalho>
+
+<div class="card">
+    <form id="form-categoria">
+        <h4 class="card-primary-title">
+            <span>Cadastrar Porto</span>
+        </h4>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="PortoNome" type="text" data-ng-model="portoVm.porto.nome" />
+                <label for="PortoNome">Nome</label>
+            </div>
+            <div class="input-field col s12 m6">                
+                    <select id="Administracao" data-ng-model="portoVm.porto.administracao">
+                        <option value="Publico">Público</option>
+                        <option value="Privado">Privado</option>
+                    </select>
+                    <label for="Administracao">Administração</label>
+            </div>            
+            <div class="input-field col s12 m6">
+                <input id="AnoFundacao" type="number" data-ng-model="portoVm.porto.anofundacao" />
+                <label for="AnoFundacao">Ano de Fundaçao</label>
+            </div>            
+        </div>
+        <div class="end-card right-align">
+            <a class="btn-flat" data-ng-click="portoVm.salvar(portoVm.porto)">Salvar</a>
+        </div>
+    </form>
+</div>
+
+<!-- Botão Voltar -->
+<div class="bck-btn">
+    <a href="#!/portos" class="btn-floating btn-medium waves-effect waves-light"> <i class="material-icons">arrow_back</i> </a>
+</div>

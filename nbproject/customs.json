@@ -1,6 +1,10 @@
 {
     "elements": {
-        "cabecalho": {},
+        "cabecalho": {
+            "attributes": {
+                "data-title": {}
+            }
+        },
         "botao-adicionar": {},
         "ng-view": {}
     },
