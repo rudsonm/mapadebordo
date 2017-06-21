@@ -1,7 +1,7 @@
 <cabecalho data-title="Porto"></cabecalho>
 
 <div class="card">
-    <form id="form-categoria">
+    <form>
         <h4 class="card-primary-title">
             <span>Cadastrar Porto</span>
         </h4>
@@ -10,17 +10,17 @@
                 <input id="PortoNome" type="text" data-ng-model="portoVm.porto.nome" />
                 <label for="PortoNome">Nome</label>
             </div>
-            <div class="input-field col s12 m6">                
-                    <select id="Administracao" data-ng-model="portoVm.porto.administracao">
-                        <option value="Publico">Público</option>
-                        <option value="Privado">Privado</option>
-                    </select>
-                    <label for="Administracao">Administração</label>
-            </div>            
             <div class="input-field col s12 m6">
-                <input id="AnoFundacao" type="number" data-ng-model="portoVm.porto.anofundacao" />
+                <select id="PortoAdministracao" data-ng-model="portoVm.porto.administracao">
+                    <option value="PUBLICO">Público</option>
+                    <option value="PRIVADO">Privado</option>
+                </select>
+                <label for="PortoAdministracao">Administração</label>
+            </div>
+            <div class="input-field col s12 m6">
+                <input id="AnoFundacao" type="number" data-ng-model="portoVm.porto.anofundacao" min="0" maxlength="4"/>
                 <label for="AnoFundacao">Ano de Fundaçao</label>
-            </div>            
+            </div>
         </div>
         <div class="end-card right-align">
             <a class="btn-flat" data-ng-click="portoVm.salvar(portoVm.porto)">Salvar</a>
