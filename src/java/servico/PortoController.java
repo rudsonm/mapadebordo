@@ -41,7 +41,6 @@ public class PortoController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Porto create(Porto porto) {
-        System.out.println("Teste" + porto.getAnofundacao());
         porto.setId(portos.size()+1);
         portos.add(porto);
         return porto;
@@ -51,9 +50,9 @@ public class PortoController {
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public void remove(@PathParam("id") int id) {
-        for (Porto especie : portos) {
-            if(especie.getId() == id) {
-                portos.remove(especie);
+        for (Porto porto : portos) {
+            if(porto.getId() == id) {
+                portos.remove(porto);
             }
         }
     }

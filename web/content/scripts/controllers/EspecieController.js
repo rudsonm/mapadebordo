@@ -16,11 +16,10 @@
         };
         
         especieVm.remover = function(especie) {
-            $http.delete("http://localhost:8080/mapadebordo/api/especies/"+especie.id).then(function(response) {
-                especieVm.especies.filter(function(e, i) {
-                    if(e.id === especie.id)
-                        especieVm.especies.splice(i, 1);
-                });
+            $http.delete("http://localhost:8080/mapadebordo/api/especies/"+especie.id);
+            especieVm.especies.filter(function(e, i) {
+                if(e.id === especie.id)
+                    especieVm.especies.splice(i, 1);
             });
             
         };

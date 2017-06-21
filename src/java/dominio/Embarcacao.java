@@ -10,7 +10,7 @@ package dominio;
  * @author julio
  */
 public class Embarcacao {
-    
+
     private int id;
     private String nome;
     private double comprimento;
@@ -20,7 +20,7 @@ public class Embarcacao {
         this.nome = nome;
         this.comprimento = comprimento;
     }
-    
+
     public Embarcacao() {
     }
 
@@ -47,7 +47,5 @@ public class Embarcacao {
     public void setComprimento(double comprimento) {
         this.comprimento = comprimento;
     }
-    
-    
-    
+
 }

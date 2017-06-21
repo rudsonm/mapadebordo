@@ -9,22 +9,21 @@ package dominio;
  *
  * @author julio
  */
-
 public class Porto {
-    
+
     private int id;
     private String nome;
     private String administracao;
     private float anofundacao;
 
-public Porto(int id, String nome, String administracao, float anofundacao) {
+    public Porto(int id, String nome, String administracao, float anofundacao) {
         this.id = id;
         this.nome = nome;
         this.administracao = administracao;
         this.anofundacao = anofundacao;
     }
 
-     public Porto() {
+    public Porto() {
     }
 
     public int getId() {
@@ -58,7 +57,5 @@ public Porto(int id, String nome, String administracao, float anofundacao) {
     public void setAnofundacao(float anofundacao) {
         this.anofundacao = anofundacao;
     }
-
-    
 
 }

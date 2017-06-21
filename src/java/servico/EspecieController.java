@@ -5,6 +5,7 @@
  */
 package servico;
 
+import dao.Conexao;
 import dominio.Especie;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +34,8 @@ public class EspecieController {
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Especie> getAll() {
+    public List<Especie> getAll() throws ClassNotFoundException {
+        Conexao conexao = new Conexao();
         return especies;
     }
     
