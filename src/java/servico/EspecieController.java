@@ -36,7 +36,6 @@ public class EspecieController {
     @Produces(MediaType.APPLICATION_JSON)
     public List<Especie> getAll() throws Exception {
         Conexao conexao = new Conexao();
-        conexao.abrir();
         return especies;
     }
     

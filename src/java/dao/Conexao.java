@@ -8,6 +8,7 @@ package dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -15,18 +16,25 @@ import java.sql.SQLException;
  */
 public class Conexao {
     private final String url = "jdbc:postgresql://localhost:5432/";
-    private final String dataBase = "postgres";
+    private final String dataBase = "mapa_de_bordo";
     private final String usuario = "postgres";
     private final String senha = "123456";
     private Connection conexao = null;
+    private Statement statement = null;
     
-    public Conexao() throws ClassNotFoundException {
+    public Conexao() throws Exception {
         Class.forName("org.postgresql.Driver");
-    }
-    
-    public void abrir() throws SQLException {
-        if(conexao == null)
-            conexao = DriverManager.getConnection(url+dataBase, usuario, senha); 
+        conexao = DriverManager.getConnection(url+dataBase, usuario, senha); 
+        ModelBuilder mb = new ModelBuilder(conexao.createStatement());
+        mb.especieBuilder();
+        mb.embarcacaoBuilder();
+        mb.fotografiaBuilder();
+        mb.lanceBuilder();
+        mb.portoBuilder();
+        mb.viagemBuilder();
+        mb.capturaBuilder();
+        mb.altersBuilder();
+        mb.closeStatement();
     }
     
     public void fechar() throws SQLException {
@@ -34,8 +42,19 @@ public class Conexao {
     }
     
     public Connection getConexao() throws SQLException {
-        if(conexao.equals(null))
-            abrir();
         return conexao;
+    }
+    
+    public Statement getStatement() throws SQLException {
+        if(statement == null)
+            statement = conexao.createStatement();
+        return statement;
+    }
+    
+    public void closeStatement() throws SQLException {
+        if(statement != null) {
+            statement.close();
+            statement = null;
+        }
     }
 }
