@@ -14,5 +14,14 @@ import javax.ws.rs.core.Application;
  */
 @ApplicationPath("api")
 public class ApplicationConfig extends Application {
-  
+  /**
+   * TODO
+   * 
+   * INSERTS
+   * SELECTS
+   * SQLINJECTION PREVENIR
+   * SERVICO PORTO/VIAGEM/LANCES/CAPTURA
+   * TRANSAÇÃO
+   * TEMPLATE VIAGEM
+   */
 }

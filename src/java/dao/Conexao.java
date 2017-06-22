@@ -14,7 +14,8 @@ import java.sql.SQLException;
  * @author julio
  */
 public class Conexao {
-    private final String url = "jdbc:postgresql://localhost:5432";
+    private final String url = "jdbc:postgresql://localhost:5432/";
+    private final String dataBase = "postgres";
     private final String usuario = "postgres";
     private final String senha = "123456";
     private Connection conexao = null;
@@ -24,8 +25,8 @@ public class Conexao {
     }
     
     public void abrir() throws SQLException {
-        if(conexao.equals(null))
-            conexao = DriverManager.getConnection(url, usuario, senha); 
+        if(conexao == null)
+            conexao = DriverManager.getConnection(url+dataBase, usuario, senha); 
     }
     
     public void fechar() throws SQLException {
