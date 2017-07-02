@@ -1,9 +1,9 @@
 (function() {
-    angular.module("MapaDeBordo").controller("EmbarcacaoController", function() {
+    angular.module("MapaDeBordo").controller("EmbarcacaoController", function($http) {
         var embarcacaoVm = this;
         
-       $http.get("http://localhost:8080/mapadebordo/api/especies").then(function(response) {
-            especieVm.especies = response.data;
+        $http.get("http://localhost:8080/mapadebordo/api/embarcacoes").then(function(response) {
+            embarcacaoVm.embarcacoes = response.data;
         });
         
         embarcacaoVm.salvar = function(embarcacao) {
@@ -14,12 +14,11 @@
         
         embarcacaoVm.remover = function(embarcacao) {
             $http.delete("http://localhost:8080/mapadebordo/api/embarcacoes/"+embarcacao.id);
-            embarcacaoVm.embarcacao.filter(function(e, i) {
+            embarcacaoVm.embarcacoes.filter(function(e, i) {
                 if(e.id === embarcacao.id)
                     embarcacaoVm.embarcacoes.splice(i, 1);
             });
             
         };
-                
     });
-})();    
+})();
