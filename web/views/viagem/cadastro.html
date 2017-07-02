@@ -1,1 +1,54 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>GlassFish Server Open Source Edition 4.1.1 - Error report</title><style type="text/css"><!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}HR {color : #525D76;}--></style> </head><body><h1>HTTP Status 500 - Internal Server Error</h1><hr/><p><b>type</b> Status report</p><p><b>message</b>Internal Server Error</p><p><b>description</b>The server encountered an internal error that prevented it from fulfilling this request.</p><hr/><h3>GlassFish Server Open Source Edition 4.1.1 </h3></body></html>
+<cabecalho data-title="Viagem"></cabecalho>
+
+<div class="card">
+    <form>
+        <h4 class="card-primary-title">
+            <span>Cadastrar Viagem</span>
+        </h4>
+        <div class="row">
+            <div class="input-field col s12">
+                <select id="ViagemEmbarcacao" data-ng-model="viagemVm.viagem.embarcacao">
+                    <option data-ng-repeat="embarcacao in viagemVm.embarcacoes" 
+                            data-ng-value="embarcacao">{{embarcacao.nome}}</option>
+                </select>
+                <label for="ViagemEmbarcacao">Embarcação</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12 m6">
+                <select id="ViagemPortoOrigem" data-ng-model="viagemVm.viagem.origem">
+                    <option data-ng-repeat="porto in viagemVm.portos"
+                            data-ng-hide="porto.id === viagemVm.viagem.destino.id"
+                            data-ng-value="porto">{{porto.nome}}</option>
+                </select>
+                <label for="ViagemPortoOrigem">Porto de Origem</label>
+            </div>
+            <div class="input-field col s12 m6">
+                <select id="ViagemPortoDestino" data-ng-model="viagemVm.viagem.destino">
+                    <option data-ng-repeat="porto in viagemVm.portos"
+                            data-ng-hide="porto.id === viagemVm.viagem.origem.id"
+                            data-ng-value="porto">{{porto.nome}}</option>
+                </select>
+                <label for="ViagemPortoDestino">Porto de Destino</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12 m6">
+                <input id="ViagemDataSaida" type="date" class="datepicker" data-ng-model="viagemVm.viagem.dataSaida">
+                <label for="ViagemDataSaida" class="active">Data de Saída</label>
+            </div>
+            <div class="input-field col s12 m6">
+                <input id="ViagemDataChegada" type="date" class="datepicker" data-ng-model="viagemVm.viagem.dataChegada">
+                <label for="ViagemDataChegada" class="active">Data de Chegada</label>
+            </div>
+        </div>
+        <div class="end-card right-align">
+            <a class="btn-flat" data-ng-click="viagemVm.salvar(viagemVm.viagem)">Salvar</a>
+        </div>
+    </form>
+</div>
+
+<!-- Botão Voltar -->
+<div class="bck-btn">
+    <a href="#!/viagens" class="btn-floating btn-medium waves-effect waves-light"> <i class="material-icons">arrow_back</i> </a>
+</div>

@@ -44,7 +44,7 @@
             controllerAs: "viagemVm"
         })
         .otherwise({
-            redirectTo: "/viagens"
+            redirectTo: "/viagens/cadastro"
         });
     });
     
