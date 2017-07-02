@@ -5,12 +5,14 @@
  */
 package dao;
 
+import java.util.List;
+
 /**
  *
  * @author julio
  */
 public interface IDataAccessObject<T> {
-    public void insert(T entity);
-    public void delete(int id);
-    public void get();
+    public void create(T entity) throws Exception;
+    public void remove(int id) throws Exception;
+    public List<T> getAll() throws Exception;
 }

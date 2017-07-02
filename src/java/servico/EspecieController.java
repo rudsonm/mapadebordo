@@ -6,6 +6,8 @@
 package servico;
 
 import dao.Conexao;
+import dao.EspecieDAO;
+import dao.IDataAccessObject;
 import dominio.Especie;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,35 +29,42 @@ import javax.ws.rs.core.Response.ResponseBuilder;
 @Path("especies")
 public class EspecieController {
     
-    private static List<Especie> especies = new ArrayList<>();
+    private IDataAccessObject especieDAO;
     
-    public EspecieController() {
+    public EspecieController() throws Exception {
+        especieDAO = new EspecieDAO();
     }
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Especie> getAll() throws Exception {
-        Conexao conexao = new Conexao();
+    public List<Especie> getAll() {
+        List<Especie> especies = null;
+        try {
+            especies = especieDAO.getAll();
+        } catch (Exception e) {
+            
+        }
         return especies;
     }
     
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Especie create(Especie especie) {
-        especie.setId(especies.size()+1);
-        especies.add(especie);
-        return especie;
+    public void create(Especie especie) throws Exception {
+        try {
+            especieDAO.create(especie);
+        } catch (Exception e) {
+            throw e;
+        }
     }
     
     @DELETE
     @Path("{id}")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void remove(@PathParam("id") int id) {
-        for (Especie especie : especies) {
-            if(especie.getId() == id) {
-                especies.remove(especie);
-            }
+    public void remove(@PathParam("id") int id) throws Exception {
+        try {
+            especieDAO.remove(id);
+        } catch (Exception e) {
+            throw e;
         }
     }
 }

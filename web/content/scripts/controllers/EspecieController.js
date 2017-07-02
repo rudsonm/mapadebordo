@@ -2,15 +2,12 @@
     angular.module("MapaDeBordo").controller("EspecieController", function($http) {
         var especieVm = this;
         
-        $http.get("http://localhost:8080/mapadebordo/api/especies")
-                .then(function(response) {
-            console.log(response);
+        $http.get("http://localhost:8080/mapadebordo/api/especies").then(function(response) {
             especieVm.especies = response.data;
         });
         
         especieVm.salvar = function(especie) {
-            $http.post("http://localhost:8080/mapadebordo/api/especies", especie).then(function(response) {
-                especieVm.especies.push(response.data);
+            $http.post("http://localhost:8080/mapadebordo/api/especies", especie).then(function() {
                 window.location.href = "#!/especies";
             });
         };

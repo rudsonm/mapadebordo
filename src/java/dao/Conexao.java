@@ -25,19 +25,20 @@ public class Conexao {
     public Conexao() throws Exception {
         Class.forName("org.postgresql.Driver");
         conexao = DriverManager.getConnection(url+dataBase, usuario, senha); 
-        ModelBuilder mb = new ModelBuilder(conexao.createStatement());
-        mb.especieBuilder();
-        mb.embarcacaoBuilder();
-        mb.fotografiaBuilder();
-        mb.lanceBuilder();
-        mb.portoBuilder();
-        mb.viagemBuilder();
-        mb.capturaBuilder();
-        mb.altersBuilder();
-        mb.closeStatement();
+//        ModelBuilder mb = new ModelBuilder(conexao.createStatement());
+//        mb.especieBuilder();
+//        mb.embarcacaoBuilder();
+//        mb.fotografiaBuilder();
+//        mb.lanceBuilder();
+//        mb.portoBuilder();
+//        mb.viagemBuilder();
+//        mb.capturaBuilder();
+//        mb.altersBuilder();
+//        mb.closeStatement();
     }
     
-    public void fechar() throws SQLException {
+    public void close() throws SQLException {
+        this.closeStatement();
         conexao.close();
     }
     

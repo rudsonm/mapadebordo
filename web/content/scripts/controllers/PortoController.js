@@ -8,8 +8,7 @@
         });
 
         portoVm.salvar = function (porto) {
-            $http.post("http://localhost:8080/mapadebordo/api/portos", porto).then(function (response) {
-                portoVm.portos.push(response.data);
+            $http.post("http://localhost:8080/mapadebordo/api/portos", porto).then(function () {
                 window.location.href = "#!/portos";
             });
         };
