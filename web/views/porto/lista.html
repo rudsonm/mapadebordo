@@ -2,7 +2,7 @@
 <div class="row">
     <div class="col s12">
         <div class="card">
-            <h5 class="card-primary-title">Porto</h5>
+            <h5 class="card-primary-title">Portos</h5>
             <div class="row">
                 <div class="input-field col s12">
                     <input id="FiltroPortoNome" type="text" data-ng-model="portoVm.filtro.nome" />
@@ -22,7 +22,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr data-ng-repeat="porto in portoVm.portos| filter: portoVm.filtro.nome | orderBy: 'nome'">
+                    <tr data-ng-repeat="porto in portoVm.portos | filter: portoVm.filtro.nome | orderBy: 'nome'">
                         <td>{{porto.nome}}</td>
                         <td>{{porto.administracao}}</td>
                         <td>{{porto.anofundacao}}</td>

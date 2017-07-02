@@ -15,9 +15,9 @@
 
         portoVm.remover = function (porto) {
             $http.delete("http://localhost:8080/mapadebordo/api/portos/" + porto.id);
-            portoVm.porto.filter(function (e, i) {
+            portoVm.portos.filter(function (e, i) {
                 if (e.id === porto.id)
-                    portoVm.porto.splice(i, 1);
+                    portoVm.portos.splice(i, 1);
             });
 
         };

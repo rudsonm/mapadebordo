@@ -5,6 +5,9 @@
  */
 package servico;
 
+import dao.Conexao;
+import dao.PortoDAO;
+import dao.IDataAccessObject;
 import dominio.Porto;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,34 +29,42 @@ import javax.ws.rs.core.Response.ResponseBuilder;
 @Path("portos")
 public class PortoController {
     
-    private static List<Porto> portos = new ArrayList<>();
+    private IDataAccessObject portoDAO;
     
-    public PortoController() {
+    public PortoController() throws Exception {
+        portoDAO = new PortoDAO();
     }
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Porto> getAll() {
+        List<Porto> portos = null;
+        try {
+            portos = portoDAO.getAll();
+        } catch (Exception e) {
+            
+        }
         return portos;
     }
     
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Porto create(Porto porto) {
-        porto.setId(portos.size()+1);
-        portos.add(porto);
-        return porto;
+    public void create(Porto porto) throws Exception {
+        try {
+            portoDAO.create(porto);
+        } catch (Exception e) {
+            throw e;
+        }
     }
     
     @DELETE
     @Path("{id}")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void remove(@PathParam("id") int id) {
-        for (Porto porto : portos) {
-            if(porto.getId() == id) {
-                portos.remove(porto);
-            }
+    public void remove(@PathParam("id") int id) throws Exception {
+        try {
+            portoDAO.remove(id);
+        } catch (Exception e) {
+            throw e;
         }
     }
 }

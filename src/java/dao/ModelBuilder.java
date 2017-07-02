@@ -27,7 +27,8 @@ public class ModelBuilder {
             + "id serial,"
             + "nome varchar(255) NOT NULL,"
             + "administracao tipo_administracao NOT NULL,"
-            + "ano_fundacao date NOT NULL,"
+            //+ "ano_fundacao date NOT NULL,"
+            + "ano_fundacao char(4) NOT NULL,"
             + "primary key(id)"
             + ");";
         statement.execute(query);

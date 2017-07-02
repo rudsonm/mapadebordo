@@ -14,13 +14,13 @@ public class Porto {
     private int id;
     private String nome;
     private String administracao;
-    private float anofundacao;
+    private int anoFundacao;
 
-    public Porto(int id, String nome, String administracao, float anofundacao) {
+    public Porto(int id, String nome, String administracao, int anoFundacao) {
         this.id = id;
         this.nome = nome;
         this.administracao = administracao;
-        this.anofundacao = anofundacao;
+        this.anoFundacao = anoFundacao;
     }
 
     public Porto() {
@@ -50,12 +50,12 @@ public class Porto {
         this.administracao = administracao;
     }
 
-    public float getAnofundacao() {
-        return anofundacao;
+    public int getAnofundacao() {
+        return anoFundacao;
     }
 
-    public void setAnofundacao(float anofundacao) {
-        this.anofundacao = anofundacao;
+    public void setAnofundacao(int anoFundacao) {
+        this.anoFundacao = anoFundacao;
     }
 
 }
