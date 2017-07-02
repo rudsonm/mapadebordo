@@ -1,10 +1,21 @@
 <cabecalho data-title="Viagem"></cabecalho>
 
 <div class="card">
-    <form>
-        <h4 class="card-primary-title">
-            <span>Cadastrar Viagem</span>
-        </h4>
+    <h4 class="card-primary-title">
+        <span>Cadastrar Viagem</span>
+    </h4>
+    <div class="row">
+        <ul class="tabs">
+            <li class="tab col s6">
+                <a href="#ViagemForm" class="active">Viagem</a>
+            </li>
+            <li class="tab col s6">
+                <a href="#LanceForm">Lançamentos</a>
+            </li>
+        </ul>
+    </div>        
+    <div id="ViagemForm">        
+        <h5 class="form-subtitle">Viagem</h5>
         <div class="row">
             <div class="input-field col s12">
                 <select id="ViagemEmbarcacao" data-ng-model="viagemVm.viagem.embarcacao">
@@ -45,7 +56,111 @@
         <div class="end-card right-align">
             <a class="btn-flat" data-ng-click="viagemVm.salvar(viagemVm.viagem)">Salvar</a>
         </div>
-    </form>
+    </div>    
+    <div id="LanceForm">
+        <div data-ng-show="viagemVm.template === 'lista'">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Início</th>
+                        <th>Término</th>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
+                        <th>Capturas</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-ng-repeat="lance in viagemVm.viagem.lances">
+                        <td>{{$index+1}}</td>
+                        <td>{{lance.dataInicio}}</td>
+                        <td>{{lance.dataTermino}}</td>
+                        <td>{{lance.latitude}}</td>
+                        <td>{{lance.longitude}}</td>
+                        <td>{{lance.capturas.length || '0'}}</td>
+                        <td>
+                            <i class="material-icons icon blue-icon">remove_red_eye</i>
+                            <i class="material-icons icon red-icon">delete</i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="end-card right-align">                
+                <a class="btn-flat" 
+                    data-ng-click="viagemVm.template = 'cadastro';
+                                   viagemVm.lance.capturas = []">Adicionar Lance</a>
+            </div>
+        </div>
+        <div data-ng-show="viagemVm.template === 'cadastro'">
+            <h5 class="form-subtitle">Lance</h5>
+            <div class="row">
+                <div class="input-field col s12 m6">
+                    <input id="LanceDataInicio" type="text" class="datepicker" data-ng-model="viagemVm.lance.dataInicio">
+                    <label for="LanceDataInicio" class="active">Data de Início</label>
+                </div>
+                <div class="input-field col s12 m6">
+                    <input id="LanceDataTermino" type="text" class="datepicker" data-ng-model="viagemVm.lance.dataTermino">
+                    <label for="LanceDataTermino" class="active">Data de Término</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6 m4">
+                    <input id="LanceComprimentoRede" type="number" data-ng-model="viagemVm.lance.comprimentoRede">
+                    <label for="LanceComprimentoRede">Comprimento da Rede</label>
+                </div>
+                <div class="input-field col s6 m4">
+                    <input id="LanceAlturaRede" type="number" data-ng-model="viagemVm.lance.alturaRede">
+                    <label for="LanceAlturaRede">Altura da Rede</label>
+                </div>
+                <div class="input-field col s6 m4">
+                    <input id="LanceTamanhoMalha" type="number" data-ng-model="viagemVm.lance.tamanhoMalha">
+                    <label for="LanceTamanhoMalha">Tamanha da Malha</label>
+                </div>
+            </div>        
+            <div class="row">
+                <div class="input-field col s6 m4">
+                    <input id="LanceProfundidade" type="number" data-ng-model="viagemVm.lance.profundidade">
+                    <label for="LanceProfundidade">Profundidade</label>
+                </div>
+                <div class="input-field col s6 m4">
+                    <input id="LanceLatitude" type="number" data-ng-model="viagemVm.lance.latitude">
+                    <label for="LanceLatitude">Latitude</label>
+                </div>
+                <div class="input-field col s6 m4">
+                    <input id="LanceLongitude" type="number" data-ng-model="viagemVm.lance.longitude">
+                    <label for="LanceLongitude">Longitude</label>
+                </div>
+            </div>
+            <div id="CapturaForm">
+                <h5 class="form-subtitle">
+                    <span>Capturas</span>
+                    <a class="right" data-ng-click="viagemVm.adicionarCaptura(viagemVm.lance)">
+                        <i class="material-icons">add</i>
+                    </a>                    
+                </h5>
+                <div data-ng-repeat="captura in viagemVm.lance.capturas">
+                    <div class="row">
+                        <div class="input-field col s12 m8">
+                            <select id="CapturaEspecie{{$index}}" data-ng-model="captura.especie">
+                                <option data-ng-repeat="especie in viagemVm.especies"
+                                        data-ng-value="especie">{{especie.nome}}</option>
+                            </select>
+                            <label for="CapturaEspecie{{$index}}">Espécie</label>
+                        </div>
+                        <div class="input-field col s12 m4">
+                            <input id="CapturaKg{{$index}}" type="number" data-ng-model="captura.kg">
+                            <label for="CapturaKg{{$index}}">Kg</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="end-card right-align">
+                <a class="btn-flat" data-ng-click="viagemVm.template = 'lista'; viagemVm.lance = {capturas:[]}">Voltar</a>
+                <a class="btn-flat" data-ng-click="viagemVm.salvarLance(viagemVm.lance)">Adicionar</a>
+            </div>
+        </div>        
+    </div>    
 </div>
 
 <!-- Botão Voltar -->
