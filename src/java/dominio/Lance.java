@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package dominio;
-import java.util.*;
+
+import java.util.List;
+import org.eclipse.persistence.jpa.jpql.parser.DateTime;
 
 /**
  *
@@ -12,30 +14,16 @@ import java.util.*;
  */
 public class Lance {
     private int id;
-    private int viagem;
-    private Date data_inicio;
-    private Date data_fim;
-    private float comprimento_rede;
-    private float altura_rede;
-    private float tamanho_malha;
+    private Viagem viagem;
+    private DateTime dataInicio;
+    private DateTime dataTermino;
+    private float comprimentoRede;
+    private float alturaRede;
+    private float tamanhoMalha;
     private float profundidade;
     private int latitude;
     private int longitude;
-    private ArrayList<Captura> captura;
-
-    public Lance(int id, int viagem, Date data_inicio, Date data_fim, float comprimento_rede, float altura_rede, float tamanho_malha, float profundidade, int latitude, int longitude, ArrayList<Captura> captura) {
-        this.id = id;
-        this.viagem = viagem;
-        this.data_inicio = data_inicio;
-        this.data_fim = data_fim;
-        this.comprimento_rede = comprimento_rede;
-        this.altura_rede = altura_rede;
-        this.tamanho_malha = tamanho_malha;
-        this.profundidade = profundidade;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.captura = captura;
-    }
+    private List<Captura> capturas;
 
     public int getId() {
         return id;
@@ -45,52 +33,52 @@ public class Lance {
         this.id = id;
     }
 
-    public int getViagem() {
+    public Viagem getViagem() {
         return viagem;
     }
 
-    public void setViagem(int viagem) {
+    public void setViagem(Viagem viagem) {
         this.viagem = viagem;
     }
 
-    public Date getData_inicio() {
-        return data_inicio;
+    public DateTime getDataInicio() {
+        return dataInicio;
     }
 
-    public void setData_inicio(Date data_inicio) {
-        this.data_inicio = data_inicio;
+    public void setDataInicio(DateTime dataInicio) {
+        this.dataInicio = dataInicio;
     }
 
-    public Date getData_fim() {
-        return data_fim;
+    public DateTime getDataTermino() {
+        return dataTermino;
     }
 
-    public void setData_fim(Date data_fim) {
-        this.data_fim = data_fim;
+    public void setDataTermino(DateTime dataTermino) {
+        this.dataTermino = dataTermino;
     }
 
-    public float getComprimento_rede() {
-        return comprimento_rede;
+    public float getComprimentoRede() {
+        return comprimentoRede;
     }
 
-    public void setComprimento_rede(float comprimento_rede) {
-        this.comprimento_rede = comprimento_rede;
+    public void setComprimentoRede(float comprimentoRede) {
+        this.comprimentoRede = comprimentoRede;
     }
 
-    public float getAltura_rede() {
-        return altura_rede;
+    public float getAlturaRede() {
+        return alturaRede;
     }
 
-    public void setAltura_rede(float altura_rede) {
-        this.altura_rede = altura_rede;
+    public void setAlturaRede(float alturaRede) {
+        this.alturaRede = alturaRede;
     }
 
-    public float getTamanho_malha() {
-        return tamanho_malha;
+    public float getTamanhoMalha() {
+        return tamanhoMalha;
     }
 
-    public void setTamanho_malha(float tamanho_malha) {
-        this.tamanho_malha = tamanho_malha;
+    public void setTamanhoMalha(float tamanhoMalha) {
+        this.tamanhoMalha = tamanhoMalha;
     }
 
     public float getProfundidade() {
@@ -117,12 +105,13 @@ public class Lance {
         this.longitude = longitude;
     }
 
-    public ArrayList<Captura> getCaptura() {
-        return captura;
+    public List<Captura> getCapturas() {
+        return capturas;
     }
 
-    public void setCaptura(ArrayList<Captura> captura) {
-        this.captura = captura;
-    } 
-       
+    public void setCapturas(List<Captura> capturas) {
+        this.capturas = capturas;
+    }
+    
+    
 }

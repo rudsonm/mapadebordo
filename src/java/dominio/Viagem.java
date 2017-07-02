@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package dominio;
-import java.util.*;
+import java.util.List;
+import java.util.Date;
 
 /**
  *
@@ -13,23 +14,13 @@ import java.util.*;
 public class Viagem {
  
     private int id;
-    private Date data_saida;
-    private Date data_chegada;
-    private int porto_origem;
-    private int porto_chegada;
-    private int embarcacao;
-    private ArrayList<Lance> lance;
+    private Date dataSaida;
+    private Date dataChegada;
+    private Porto origem;
+    private Porto destino;
+    private Embarcacao embarcacao;
+    private List<Lance> lances;
 
-    public Viagem(int id, Date data_saida, Date data_chegada, int porto_origem, int porto_chegada, int embarcacao, ArrayList<Lance> lance) {
-        this.id = id;
-        this.data_saida = data_saida;
-        this.data_chegada = data_chegada;
-        this.porto_origem = porto_origem;
-        this.porto_chegada = porto_chegada;
-        this.embarcacao = embarcacao;
-        this.lance = lance;
-    }
-    
     public int getId() {
         return id;
     }
@@ -38,52 +29,53 @@ public class Viagem {
         this.id = id;
     }
 
-    public Date getData_saida() {
-        return data_saida;
+    public Date getDataSaida() {
+        return dataSaida;
     }
 
-    public void setData_saida(Date data_saida) {
-        this.data_saida = data_saida;
+    public void setDataSaida(Date dataSaida) {
+        this.dataSaida = dataSaida;
     }
 
-    public Date getData_chegada() {
-        return data_chegada;
+    public Date getDataChegada() {
+        return dataChegada;
     }
 
-    public void setData_chegada(Date data_chegada) {
-        this.data_chegada = data_chegada;
+    public void setDataChegada(Date dataChegada) {
+        this.dataChegada = dataChegada;
     }
 
-    public int getPorto_origem() {
-        return porto_origem;
+    public Porto getOrigem() {
+        return origem;
     }
 
-    public void setPorto_origem(int porto_origem) {
-        this.porto_origem = porto_origem;
+    public void setOrigem(Porto origem) {
+        this.origem = origem;
     }
 
-    public int getPorto_chegada() {
-        return porto_chegada;
+    public Porto getDestino() {
+        return destino;
     }
 
-    public void setPorto_chegada(int porto_chegada) {
-        this.porto_chegada = porto_chegada;
+    public void setDestino(Porto destino) {
+        this.destino = destino;
     }
 
-    public int getEmbarcacao() {
+    public Embarcacao getEmbarcacao() {
         return embarcacao;
     }
 
-    public void setEmbarcacao(int embarcacao) {
+    public void setEmbarcacao(Embarcacao embarcacao) {
         this.embarcacao = embarcacao;
     }
 
-    public ArrayList<Lance> getLance() {
-        return lance;
+    public List<Lance> getLances() {
+        return lances;
     }
 
-    public void setLance(ArrayList<Lance> lance) {
-        this.lance = lance;
+    public void setLances(List<Lance> lances) {
+        this.lances = lances;
     }
-       
+    
+    
 }

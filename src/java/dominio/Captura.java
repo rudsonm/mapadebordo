@@ -11,15 +11,9 @@ package dominio;
  */
 public class Captura {
 
-    private int id;
-    private int lance;
+    private int id;    
     private float kg;
-
-    public Captura(int id, int lance, float kg) {
-        this.id = id;
-        this.lance = lance;
-        this.kg = kg;
-    }
+    private Lance lance;
 
     public int getId() {
         return id;
@@ -29,14 +23,6 @@ public class Captura {
         this.id = id;
     }
 
-    public int getLance() {
-        return lance;
-    }
-
-    public void setLance(int lance) {
-        this.lance = lance;
-    }
-
     public float getKg() {
         return kg;
     }
@@ -44,7 +30,14 @@ public class Captura {
     public void setKg(float kg) {
         this.kg = kg;
     }
-    
+
+    public Lance getLance() {
+        return lance;
+    }
+
+    public void setLance(Lance lance) {
+        this.lance = lance;
+    }
     
     
 }
