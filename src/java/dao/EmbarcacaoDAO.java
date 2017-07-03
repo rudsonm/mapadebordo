@@ -6,10 +6,8 @@
 package dao;
 
 import dominio.Embarcacao;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +17,16 @@ import java.util.List;
  * @author rudson
  */
 public class EmbarcacaoDAO implements IDataAccessObject<Embarcacao> {
+    
+    private Conexao conexao;
+    
+    public EmbarcacaoDAO() {
+        
+    }
+    
+    public EmbarcacaoDAO(Conexao conexao) {
+        this.conexao = conexao;
+    }
     
     @Override
     public void create(Embarcacao embarcacao) throws Exception {
@@ -58,6 +66,23 @@ public class EmbarcacaoDAO implements IDataAccessObject<Embarcacao> {
         }
         conexao.close();
         return especies;
+    }
+
+    @Override
+    public Embarcacao getOne(int id) throws Exception {
+        Statement statement = conexao.getConexao().createStatement();
+        String sql = "select * from embarcacao where id = "+id;
+        ResultSet result = statement.executeQuery(sql);
+        
+        Embarcacao embarcacao = new Embarcacao();
+        result.next();
+        
+        embarcacao.setId(result.getInt("id"));
+        embarcacao.setNome(result.getString("nome"));
+        embarcacao.setComprimento(result.getDouble("comprimento"));
+        statement.close();
+        
+        return embarcacao;
     }
     
 }

@@ -20,6 +20,16 @@ import java.util.List;
  */
 public class EspecieDAO implements IDataAccessObject<Especie> {
     
+    private Conexao conexao;
+    
+    public EspecieDAO() {
+        
+    }
+    
+    public EspecieDAO(Conexao conexao) {
+        this.conexao = conexao;
+    }
+    
     @Override
     public void create(Especie especie) throws Exception {
         String query = "INSERT INTO especie (nome, profundidade_minima, profundidade_maxima) VALUES (?,?,?)";
@@ -60,6 +70,23 @@ public class EspecieDAO implements IDataAccessObject<Especie> {
         }
         conexao.close();
         return especies;
+    }
+
+    @Override
+    public Especie getOne(int id) throws Exception {
+        Statement statement = conexao.getConexao().createStatement();
+        String sql = "select * from especie where id = "+id;
+        ResultSet result = statement.executeQuery(sql);
+        
+        Especie especie = new Especie();
+        result.next();
+        
+        especie.setId(result.getInt("id"));
+        especie.setProfundidadeMaxima(result.getFloat("profundidade_maxima"));
+        especie.setProfundidadeMinima(result.getFloat("profundidade_minima"));
+        statement.close();
+        
+        return especie;
     }
     
 }

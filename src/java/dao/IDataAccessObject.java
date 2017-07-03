@@ -15,4 +15,5 @@ public interface IDataAccessObject<T> {
     public void create(T entity) throws Exception;
     public void remove(int id) throws Exception;
     public List<T> getAll() throws Exception;
+    public T getOne(int id) throws Exception;
 }

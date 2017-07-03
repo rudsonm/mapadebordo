@@ -6,7 +6,11 @@
 package dao;
 
 import dominio.Captura;
+import dominio.Especie;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -43,6 +47,35 @@ public class CapturaDAO implements IDataAccessObject<Captura> {
     @Override
     public List<Captura> getAll() throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Captura getOne(int id) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public List<Captura> getByLance(int lance) throws Exception {
+        
+        Statement statement = conexao.getConexao().createStatement();
+        String sql = "select * from captura where viagem_id = "+lance;
+        ResultSet result = statement.executeQuery(sql);
+        
+        List<Captura> capturas = new ArrayList<>();
+        
+        while ( result.next() ){
+        Captura captura = new Captura();
+        captura.setId(result.getInt("id"));
+        
+        EspecieDAO especieDAO = new EspecieDAO(conexao);
+        Especie especie = especieDAO.getOne(result.getInt("especie_id"));
+        captura.setEspecie(especie);
+        
+        captura.setKg(result.getFloat("kg"));
+        capturas.add(captura);
+        }
+        
+        return capturas;
+        
     }
     
 }

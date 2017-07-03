@@ -7,10 +7,14 @@ package dao;
 
 import dominio.Captura;
 import dominio.Lance;
+import dominio.Viagem;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
+import org.eclipse.persistence.jpa.jpql.parser.DateTime;
 
 /**
  *
@@ -59,5 +63,35 @@ public class LanceDAO implements IDataAccessObject<Lance> {
     public List<Lance> getAll() throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public Lance getOne(int id) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
+    public List<Lance> getByViagem(int viagem) throws Exception {
+        
+        Statement statement = conexao.getConexao().createStatement();
+        String sql = "select * from lance where viagem_id = "+viagem;
+        ResultSet result = statement.executeQuery(sql);
+        
+        List<Lance> lances = new ArrayList<>();
+        
+        while ( result.next() ){
+        Lance lance = new Lance();
+        lance.setId(result.getInt("id"));
+        // timestamp to datetime data_inicio
+        // timestamp to datetime data_termino
+        lance.setComprimentoRede(result.getFloat("comprimento_rede"));
+        lance.setAlturaRede(result.getFloat("altura_rede"));
+        lance.setTamanhoMalha(result.getFloat("tamanho_malha"));
+        lance.setProfundidade(result.getFloat("profundidade"));
+        lance.setLatitude(result.getFloat("latitude"));
+        lance.setLongitude(result.getFloat("longitude"));
+        lances.add(lance);
+        }
+        
+        return lances;
+        
+    }
 }
