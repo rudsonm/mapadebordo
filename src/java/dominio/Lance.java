@@ -21,8 +21,8 @@ public class Lance {
     private float alturaRede;
     private float tamanhoMalha;
     private float profundidade;
-    private int latitude;
-    private int longitude;
+    private float latitude;
+    private float longitude;
     private List<Captura> capturas;
 
     public int getId() {
@@ -89,19 +89,19 @@ public class Lance {
         this.profundidade = profundidade;
     }
 
-    public int getLatitude() {
+    public float getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(int latitude) {
+    public void setLatitude(float latitude) {
         this.latitude = latitude;
     }
 
-    public int getLongitude() {
+    public float getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(int longitude) {
+    public void setLongitude(float longitude) {
         this.longitude = longitude;
     }
 

@@ -14,6 +14,7 @@ public class Captura {
     private int id;    
     private float kg;
     private Especie especie;
+    private Lance lance;
 
     public int getId() {
         return id;
@@ -37,6 +38,14 @@ public class Captura {
 
     public void setEspecie(Especie especie) {
         this.especie = especie;
+    }
+
+    public Lance getLance() {
+        return lance;
+    }
+
+    public void setLance(Lance lance) {
+        this.lance = lance;
     }
     
     
