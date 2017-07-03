@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package dominio;
+import java.util.Collection;
 import java.util.List;
 import java.util.Date;
 
@@ -19,7 +20,7 @@ public class Viagem {
     private Porto origem;
     private Porto destino;
     private Embarcacao embarcacao;
-    private List<Lance> lances;
+    private Collection<Lance> lances;
 
     public int getId() {
         return id;
@@ -69,7 +70,7 @@ public class Viagem {
         this.embarcacao = embarcacao;
     }
 
-    public List<Lance> getLances() {
+    public Collection<Lance> getLances() {
         return lances;
     }
 

@@ -5,8 +5,9 @@
         viagemVm.template = 'lista';
         
         viagemVm.salvar = function(viagem) {
-            return console.log(viagem);
-            $http.post("http://localhost:8080/mapadebordo/api/viagens", viagem).success(function() {
+            viagem.dataSaida = converterData(viagem.dataSaida);
+            viagem.dataChegada = converterData(viagem.dataChegada);
+            $http.post("http://localhost:8080/mapadebordo/api/viagens", viagem).then(function() {
                 window.location.href = "!#/viagens";
             });
         };
@@ -49,6 +50,11 @@
                     $("#CapturaEspecie").material_select();
                 });
             });
+        }
+        
+        function converterData(data) {
+            var tmp = data.split("/");
+            return tmp[2] + "-" + tmp[1] + "-" + tmp[0];
         }
         
         function _init() {
