@@ -50,11 +50,11 @@ public class Porto {
         this.administracao = administracao;
     }
 
-    public int getAnofundacao() {
+    public int getAnoFundacao() {
         return anoFundacao;
     }
 
-    public void setAnofundacao(int anoFundacao) {
+    public void setAnoFundacao(int anoFundacao) {
         this.anoFundacao = anoFundacao;
     }
 
