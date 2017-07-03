@@ -79,7 +79,7 @@ public class EmbarcacaoDAO implements IDataAccessObject<Embarcacao> {
         
         embarcacao.setId(result.getInt("id"));
         embarcacao.setNome(result.getString("nome"));
-        embarcacao.setComprimento(result.getDouble("comprimento"));
+        embarcacao.setComprimento(result.getDouble("tamanho"));
         statement.close();
         
         return embarcacao;
