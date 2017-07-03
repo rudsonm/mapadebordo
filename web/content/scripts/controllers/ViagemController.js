@@ -25,6 +25,18 @@
             });
         };
         
+        function _buscarViagens() {
+            $http.get("http://localhost:8080/mapadebordo/api/viagens").then(function(response) {
+                viagemVm.viagens = response.data;
+            });
+        };
+        
+        function _buscarViagem(id) {
+            $http.get("http://localhost:8080/mapadebordo/api/viagens"+id).then(function(response) {
+                viagemVm.viagem = response.data;
+            });
+        };
+        
         function _buscarEmbarcacoes() {
             $http.get("http://localhost:8080/mapadebordo/api/embarcacoes").then(function(response) {
                 viagemVm.embarcacoes = response.data;
@@ -60,7 +72,8 @@
         function _init() {
             _buscarEmbarcacoes();
             _buscarEspecies();
-            _buscarPortos();    
+            _buscarPortos();
+            _buscarViagens();
             $(document).ready(function() {
                $('.datepicker').pickadate({
                     selectMonths: true,
