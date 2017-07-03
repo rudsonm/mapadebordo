@@ -41,7 +41,7 @@ public class ModelBuilder {
             "data_chegada date NOT NULL," +
             "porto_origem_id integer NOT NULL," +
             "porto_destino_id integer NOT NULL," +
-            "embarcadao_id integer NOT NULL," +
+            "embarcacao_id integer NOT NULL," +
             "primary key(id)" +
             ");";
         statement.execute(query);
