@@ -20,6 +20,17 @@ import java.util.List;
  */
 public class PortoDAO implements IDataAccessObject<Porto> {
     
+    private Conexao conexao;
+    
+    public PortoDAO() {
+        
+    }
+    
+    public PortoDAO(Conexao conexao) {
+        this.conexao = conexao;
+    }
+    
+    
     @Override
     public void create(Porto porto) throws Exception {
         String query = "INSERT INTO porto (nome, administracao, ano_fundacao) VALUES (?,CAST(? AS tipo_administracao),?)";
@@ -60,6 +71,23 @@ public class PortoDAO implements IDataAccessObject<Porto> {
         }
         conexao.close();
         return portos;
+    }
+
+    @Override
+    public Porto getOne(int id) throws Exception {
+        Statement statement = conexao.getConexao().createStatement();
+        String sql = "select * from porto where id = "+id;
+        ResultSet result = statement.executeQuery(sql);
+        
+        Porto porto = new Porto();
+        result.next();
+        
+        porto.setId(result.getInt("id"));
+        porto.setAdministracao(result.getString("administracao"));
+        porto.setAnofundacao(result.getInt("ano_fundacao"));
+        statement.close();
+        
+        return porto;
     }
     
 }
