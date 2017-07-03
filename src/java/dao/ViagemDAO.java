@@ -36,6 +36,7 @@ public class ViagemDAO implements IDataAccessObject<Viagem> {
             lance.setViagem(viagem);            
             lanceDAO.create(lance);
         }
+        conexao.close();
     }
 
     @Override
