@@ -38,7 +38,7 @@ public class PortoDAO implements IDataAccessObject<Porto> {
         PreparedStatement preparedStatement = conexao.getConexao().prepareStatement(query);
         preparedStatement.setString(1, porto.getNome());
         preparedStatement.setString(2, porto.getAdministracao());
-        preparedStatement.setInt(3, porto.getAnofundacao());
+        preparedStatement.setInt(3, porto.getAnoFundacao());
         preparedStatement.executeUpdate();
         preparedStatement.close();
         conexao.close();
@@ -66,7 +66,7 @@ public class PortoDAO implements IDataAccessObject<Porto> {
             porto.setId(result.getInt("id"));
             porto.setNome(result.getString("nome"));
             porto.setAdministracao(result.getString("administracao"));
-            porto.setAnofundacao(result.getInt("ano_fundacao"));
+            porto.setAnoFundacao(result.getInt("ano_fundacao"));
             portos.add(porto);
         }
         conexao.close();
@@ -84,7 +84,7 @@ public class PortoDAO implements IDataAccessObject<Porto> {
         
         porto.setId(result.getInt("id"));
         porto.setAdministracao(result.getString("administracao"));
-        porto.setAnofundacao(result.getInt("ano_fundacao"));
+        porto.setAnoFundacao(result.getInt("ano_fundacao"));
         statement.close();
         
         return porto;

@@ -24,7 +24,7 @@ public class ViagemDAO implements IDataAccessObject<Viagem> {
     @Override
     public void create(Viagem viagem) throws Exception {
         Conexao conexao = new Conexao();
-        String query = "INSERT INTO viagem (data_saida, data_chegada, porto_origem, porto_destino, embarcacao) VALUES (?,?,?,?,?) RETURNING id";
+        String query = "INSERT INTO viagem (data_saida, data_chegada, porto_origem_id, porto_destino_id, embarcacao_id) VALUES (?,?,?,?,?) RETURNING id";
         PreparedStatement statement = conexao.getConexao().prepareStatement(query);
         statement.setDate(1, (Date) viagem.getDataSaida());
         statement.setDate(2, (Date) viagem.getDataChegada());
