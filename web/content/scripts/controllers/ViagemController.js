@@ -32,7 +32,7 @@
         };
         
         function _buscarViagem(id) {
-            $http.get("http://localhost:8080/mapadebordo/api/viagens"+id).then(function(response) {
+            $http.get("http://localhost:8080/mapadebordo/api/viagens/"+id).then(function(response) {
                 viagemVm.viagem = response.data;
             });
         };

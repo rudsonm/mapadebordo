@@ -5,11 +5,15 @@
  */
 package dominio;
 
+import java.io.Serializable;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  *
  * @author julio
  */
-public class Captura {
+@XmlRootElement
+public class Captura implements Serializable {
 
     private int id;    
     private float kg;

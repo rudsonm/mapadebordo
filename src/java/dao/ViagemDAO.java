@@ -12,6 +12,7 @@ import dominio.Viagem;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -26,21 +27,30 @@ public class ViagemDAO implements IDataAccessObject<Viagem> {
     @Override
     public void create(Viagem viagem) throws Exception {
         Conexao conexao = new Conexao();
+        Statement statement = conexao.getConexao().createStatement();
+        statement.execute("BEGIN");
         String query = "INSERT INTO viagem (data_saida, data_chegada, porto_origem_id, porto_destino_id, embarcacao_id) VALUES (?,?,?,?,?) RETURNING id";
-        PreparedStatement statement = conexao.getConexao().prepareStatement(query);
-        statement.setDate(1, (Date) viagem.getDataSaida());
-        statement.setDate(2, (Date) viagem.getDataChegada());
-        statement.setInt(3, viagem.getOrigem().getId());
-        statement.setInt(4, viagem.getDestino().getId());
-        statement.setInt(5, viagem.getEmbarcacao().getId());
-        ResultSet result = statement.executeQuery();
-        result.next();
-        viagem.setId(result.getInt("id"));
-        LanceDAO lanceDAO = new LanceDAO(conexao);
-        for (Lance lance : viagem.getLances()) {
-            lance.setViagem(viagem);            
-            lanceDAO.create(lance);
-        }
+        PreparedStatement preparedStatement = conexao.getConexao().prepareStatement(query);
+        preparedStatement.setDate(1, (Date) viagem.getDataSaida());
+        preparedStatement.setDate(2, (Date) viagem.getDataChegada());
+        preparedStatement.setInt(3, viagem.getOrigem().getId());
+        preparedStatement.setInt(4, viagem.getDestino().getId());
+        preparedStatement.setInt(5, viagem.getEmbarcacao().getId());
+        try {
+            ResultSet result = preparedStatement.executeQuery();
+            result.next();
+            viagem.setId(result.getInt("id"));
+            LanceDAO lanceDAO = new LanceDAO(conexao);
+            for (Lance lance : viagem.getLances()) {
+                lance.setViagem(viagem);            
+                lanceDAO.create(lance);
+            }
+            statement.execute("COMMIT");
+        } catch (SQLException e) {
+            statement.execute("ROLLBACK");
+        }        
+        statement.close();
+        preparedStatement.close();
         conexao.close();
     }
 

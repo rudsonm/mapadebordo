@@ -5,14 +5,18 @@
  */
 package dominio;
 
+import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
+import javax.xml.bind.annotation.XmlRootElement;
 import org.eclipse.persistence.jpa.jpql.parser.DateTime;
 
 /**
  *
  * @author julio
  */
-public class Lance {
+@XmlRootElement
+public class Lance implements Serializable {
     private int id;
     private Viagem viagem;
     private DateTime dataInicio;
@@ -23,7 +27,7 @@ public class Lance {
     private float profundidade;
     private float latitude;
     private float longitude;
-    private List<Captura> capturas;
+    private Collection<Captura> capturas;
 
     public int getId() {
         return id;
@@ -105,11 +109,11 @@ public class Lance {
         this.longitude = longitude;
     }
 
-    public List<Captura> getCapturas() {
+    public Collection<Captura> getCapturas() {
         return capturas;
     }
 
-    public void setCapturas(List<Captura> capturas) {
+    public void setCapturas(Collection<Captura> capturas) {
         this.capturas = capturas;
     }
     

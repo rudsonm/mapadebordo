@@ -4,15 +4,16 @@
  * and open the template in the editor.
  */
 package dominio;
+import java.io.Serializable;
+import java.sql.Date;
 import java.util.Collection;
 import java.util.List;
-import java.util.Date;
 
 /**
  *
  * @author julio
  */
-public class Viagem {
+public class Viagem implements Serializable {
  
     private int id;
     private Date dataSaida;
