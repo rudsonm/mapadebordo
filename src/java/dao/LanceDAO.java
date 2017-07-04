@@ -71,11 +71,9 @@ public class LanceDAO implements IDataAccessObject<Lance> {
     }
     
     public List<Lance> getByViagem(int viagem) throws Exception {
-        
         Statement statement = conexao.getConexao().createStatement();
         String sql = "select * from lance where viagem_id = "+viagem;
         ResultSet result = statement.executeQuery(sql);
-        
         List<Lance> lances = new ArrayList<>();
         
         while ( result.next() ){
@@ -91,7 +89,6 @@ public class LanceDAO implements IDataAccessObject<Lance> {
             lance.setLongitude(result.getFloat("longitude"));
             lances.add(lance);
         }
-        
         return lances;
         
     }

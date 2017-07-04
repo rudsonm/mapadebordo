@@ -7,9 +7,14 @@
         viagemVm.salvar = function(viagem) {
             viagem.dataSaida = converterData(viagem.dataSaida);
             viagem.dataChegada = converterData(viagem.dataChegada);
-            $http.post("http://localhost:8080/mapadebordo/api/viagens", viagem).then(function() {
-                window.location.href = "!#/viagens";
-            });
+            $http.post("http://localhost:8080/mapadebordo/api/viagens", viagem).then(
+                function() {
+                    window.location.href = "!#/viagens";
+                },
+                function() {
+                    window.location.href = "!#/viagens";
+                }
+            );
         };
         
         viagemVm.salvarLance = function(lance) {
@@ -35,6 +40,9 @@
             var requisicoes = 0;
             $http.get("http://localhost:8080/mapadebordo/api/viagens/"+id).then(function(response) {
                 viagemVm.viagem = response.data;
+                setTimeout(function() {
+                    $("select").material_select();
+                });
                 $http.get("http://localhost:8080/mapadebordo/api/viagens/"+id+"/lances").then(function(response) {
                     viagemVm.viagem.lances = response.data;                    
                     viagemVm.viagem.lances.forEach(function(lance) {

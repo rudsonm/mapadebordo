@@ -54,7 +54,7 @@ public class EmbarcacaoDAO implements IDataAccessObject<Embarcacao> {
     @Override
     public List<Embarcacao> getAll() throws Exception {
         Conexao conexao = new Conexao();
-        List<Embarcacao> especies = new ArrayList<>();
+        List<Embarcacao> embarcao = new ArrayList<>();
         String query = "SELECT * FROM embarcacao";
         ResultSet result = conexao.getStatement().executeQuery(query);
         while(result.next()) {
@@ -62,10 +62,10 @@ public class EmbarcacaoDAO implements IDataAccessObject<Embarcacao> {
             embarcacao.setId(result.getInt("id"));
             embarcacao.setNome(result.getString("nome"));
             embarcacao.setComprimento(result.getDouble("tamanho"));
-            especies.add(embarcacao);
+            embarcao.add(embarcacao);
         }
         conexao.close();
-        return especies;
+        return embarcao;
     }
 
     @Override

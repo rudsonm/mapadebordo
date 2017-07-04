@@ -27,16 +27,16 @@ public class ViagemDAO implements IDataAccessObject<Viagem> {
     @Override
     public void create(Viagem viagem) throws Exception {
         Conexao conexao = new Conexao();
-        Statement statement = conexao.getConexao().createStatement();
-        statement.execute("BEGIN");
+//        Statement statement = conexao.getConexao().createStatement();
+//        statement.execute("BEGIN");
         String query = "INSERT INTO viagem (data_saida, data_chegada, porto_origem_id, porto_destino_id, embarcacao_id) VALUES (?,?,?,?,?) RETURNING id";
         PreparedStatement preparedStatement = conexao.getConexao().prepareStatement(query);
-        preparedStatement.setDate(1, (Date) viagem.getDataSaida());
-        preparedStatement.setDate(2, (Date) viagem.getDataChegada());
+        preparedStatement.setDate(1, viagem.getDataSaida());
+        preparedStatement.setDate(2, viagem.getDataChegada());
         preparedStatement.setInt(3, viagem.getOrigem().getId());
         preparedStatement.setInt(4, viagem.getDestino().getId());
         preparedStatement.setInt(5, viagem.getEmbarcacao().getId());
-        try {
+//        try {
             ResultSet result = preparedStatement.executeQuery();
             result.next();
             viagem.setId(result.getInt("id"));
@@ -45,11 +45,11 @@ public class ViagemDAO implements IDataAccessObject<Viagem> {
                 lance.setViagem(viagem);            
                 lanceDAO.create(lance);
             }
-            statement.execute("COMMIT");
-        } catch (SQLException e) {
-            statement.execute("ROLLBACK");
-        }        
-        statement.close();
+//            statement.execute("COMMIT");
+//        } catch (SQLException e) {
+//            statement.execute("ROLLBACK");
+//        }        
+//        statement.close();
         preparedStatement.close();
         conexao.close();
     }
@@ -81,7 +81,7 @@ public class ViagemDAO implements IDataAccessObject<Viagem> {
             viagem.setDestino(porto);
 
             EmbarcacaoDAO embarcacaoDAO = new EmbarcacaoDAO(conexao);
-            Embarcacao embarcacao = embarcacaoDAO.getOne(result.getInt("embarcadao_id"));
+            Embarcacao embarcacao = embarcacaoDAO.getOne(result.getInt("embarcacao_id"));
             viagem.setEmbarcacao(embarcacao);
 
             viagens.add(viagem);

@@ -19,6 +19,7 @@
             <div class="input-field col s12">
                 <select id="ViagemEmbarcacao" data-ng-model="viagemVm.viagem.embarcacao">
                     <option data-ng-repeat="embarcacao in viagemVm.embarcacoes" 
+                            data-ng-selected="embarcacao.id === viagemVm.viagem.embarcacao.id"
                             data-ng-value="embarcacao">{{embarcacao.nome}}</option>
                 </select>
                 <label for="ViagemEmbarcacao">Embarcação</label>
@@ -28,6 +29,7 @@
             <div class="input-field col s12 m6">
                 <select id="ViagemPortoOrigem" data-ng-model="viagemVm.viagem.origem">
                     <option data-ng-repeat="porto in viagemVm.portos"
+                            data-ng-selected="porto.id === viagemVm.viagem.origem.id"
                             data-ng-hide="porto.id === viagemVm.viagem.destino.id"
                             data-ng-value="porto">{{porto.nome}}</option>
                 </select>
@@ -36,6 +38,7 @@
             <div class="input-field col s12 m6">
                 <select id="ViagemPortoDestino" data-ng-model="viagemVm.viagem.destino">
                     <option data-ng-repeat="porto in viagemVm.portos"
+                            data-ng-selected="porto.id === viagemVm.viagem.destino.id"
                             data-ng-hide="porto.id === viagemVm.viagem.origem.id"
                             data-ng-value="porto">{{porto.nome}}</option>
                 </select>

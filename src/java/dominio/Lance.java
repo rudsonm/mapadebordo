@@ -6,9 +6,11 @@
 package dominio;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import org.eclipse.persistence.jpa.jpql.parser.DateTime;
 
 /**
@@ -27,8 +29,14 @@ public class Lance implements Serializable {
     private float profundidade;
     private float latitude;
     private float longitude;
-    private Collection<Captura> capturas;
+    private List<Captura> capturas;
 
+    public Lance() {
+        this.dataInicio = null;
+        this.dataTermino = null;
+        this.capturas = new ArrayList<>();
+    }
+    
     public int getId() {
         return id;
     }
@@ -109,11 +117,12 @@ public class Lance implements Serializable {
         this.longitude = longitude;
     }
 
-    public Collection<Captura> getCapturas() {
+    @XmlTransient
+    public List<Captura> getCapturas() {
         return capturas;
     }
 
-    public void setCapturas(Collection<Captura> capturas) {
+    public void setCapturas(List<Captura> capturas) {
         this.capturas = capturas;
     }
     

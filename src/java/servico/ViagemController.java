@@ -66,7 +66,13 @@ public class ViagemController {
     @Path("{id}/lances")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Lance> getLances(@PathParam("id") int id) throws Exception {
-        LanceDAO lanceDAO = new LanceDAO();
-        return lanceDAO.getByViagem(id);
+        List<Lance> lances = null;
+        try {
+            LanceDAO lanceDAO = new LanceDAO();
+            lances = lanceDAO.getByViagem(id);
+        } catch(Exception e) {
+            throw e;
+        }
+        return lances;
     }
 }
