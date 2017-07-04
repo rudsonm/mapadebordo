@@ -19,15 +19,17 @@
                 <label for="EspecieProfundidadeMaxima">Profundidade Maxima</label>
             </div>            
         </div>
-        <div class="file-field input-field">
-            <div class="btn">
-                <span>Imagens</span>
-                <input type="file" multiple>
+        <div class="row">
+            <div class="file-field input-field col s12">
+                <div class="btn">
+                    <span>Imagens</span>
+                    <input id="EspecieImagens" type="file" multiple>
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" placeholder="Anexe uma ou mais imagens">
+                </div>
             </div>
-            <div class="file-path-wrapper">
-                <input class="file-path validate" type="text" placeholder="Anexe uma ou mais imagens">
-            </div>
-        </div>
+        </div>            
         <div class="end-card right-align">
             <a class="btn-flat" data-ng-click="especieVm.salvar(especieVm.especie)">Salvar</a>
         </div>
