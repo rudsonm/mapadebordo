@@ -74,7 +74,7 @@ public class Viagem {
         return lances;
     }
 
-    public void setLances(List<Lance> lances) {
+    public void setLances(Collection<Lance> lances) {
         this.lances = lances;
     }
     

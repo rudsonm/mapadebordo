@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import org.eclipse.persistence.jpa.jpql.parser.DateTime;
 
@@ -69,13 +70,13 @@ public class LanceDAO implements IDataAccessObject<Lance> {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public List<Lance> getByViagem(int viagem) throws Exception {
+    public Collection<Lance> getByViagem(int viagem) throws Exception {
         
         Statement statement = conexao.getConexao().createStatement();
         String sql = "select * from lance where viagem_id = "+viagem;
         ResultSet result = statement.executeQuery(sql);
         
-        List<Lance> lances = new ArrayList<>();
+        Collection<Lance> lances = new ArrayList<>();
         
         while ( result.next() ){
         Lance lance = new Lance();

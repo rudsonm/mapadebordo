@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -67,7 +68,7 @@ public class ViagemDAO implements IDataAccessObject<Viagem> {
             viagem.setOrigem(porto);
 
             porto = portoDAO.getOne(result.getInt("porto_destino_id"));
-            viagem.setOrigem(porto);
+            viagem.setDestino(porto);
 
             EmbarcacaoDAO embarcacaoDAO = new EmbarcacaoDAO(conexao);
             Embarcacao embarcacao = embarcacaoDAO.getOne(result.getInt("embarcadao_id"));
@@ -87,8 +88,11 @@ public class ViagemDAO implements IDataAccessObject<Viagem> {
         Statement statement = conexao.getConexao().createStatement();
         String sql = "select * from viagem where id = "+id;
         ResultSet result = statement.executeQuery(sql);
-        result.next();
+        
         Viagem viagem = new Viagem();
+        
+        result.next();
+         
         viagem.setId(result.getInt("id"));
         viagem.setDataChegada(result.getDate("data_saida"));
         viagem.setDataSaida(result.getDate("data_chegada"));
@@ -98,13 +102,19 @@ public class ViagemDAO implements IDataAccessObject<Viagem> {
         viagem.setOrigem(porto);
         
         porto = portoDAO.getOne(result.getInt("porto_destino_id"));
-        viagem.setOrigem(porto);
+        viagem.setDestino(porto);
         
         EmbarcacaoDAO embarcacaoDAO = new EmbarcacaoDAO(conexao);
         Embarcacao embarcacao = embarcacaoDAO.getOne(result.getInt("embarcadao_id"));
         viagem.setEmbarcacao(embarcacao);
         
         LanceDAO lanceDAO = new LanceDAO(conexao);
-        return viagem;
+        Collection<Lance> lances = lanceDAO.getByViagem(viagem.getId());
+        viagem.setLances(lances);
+        statement.close();
+        conexao.close();
+        
+         return viagem;
+        
     }
 }

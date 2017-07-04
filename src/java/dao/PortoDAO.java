@@ -83,6 +83,7 @@ public class PortoDAO implements IDataAccessObject<Porto> {
         result.next();
         
         porto.setId(result.getInt("id"));
+        porto.setNome(result.getString("nome"));
         porto.setAdministracao(result.getString("administracao"));
         porto.setAnoFundacao(result.getInt("ano_fundacao"));
         statement.close();
