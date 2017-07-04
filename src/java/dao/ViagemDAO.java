@@ -27,8 +27,8 @@ public class ViagemDAO implements IDataAccessObject<Viagem> {
     @Override
     public void create(Viagem viagem) throws Exception {
         Conexao conexao = new Conexao();
-//        Statement statement = conexao.getConexao().createStatement();
-//        statement.execute("BEGIN");
+        Statement statement = conexao.getConexao().createStatement();
+        statement.execute("BEGIN");
         String query = "INSERT INTO viagem (data_saida, data_chegada, porto_origem_id, porto_destino_id, embarcacao_id) VALUES (?,?,?,?,?) RETURNING id";
         PreparedStatement preparedStatement = conexao.getConexao().prepareStatement(query);
         preparedStatement.setDate(1, viagem.getDataSaida());
@@ -36,7 +36,7 @@ public class ViagemDAO implements IDataAccessObject<Viagem> {
         preparedStatement.setInt(3, viagem.getOrigem().getId());
         preparedStatement.setInt(4, viagem.getDestino().getId());
         preparedStatement.setInt(5, viagem.getEmbarcacao().getId());
-//        try {
+        try {
             ResultSet result = preparedStatement.executeQuery();
             result.next();
             viagem.setId(result.getInt("id"));
@@ -45,11 +45,11 @@ public class ViagemDAO implements IDataAccessObject<Viagem> {
                 lance.setViagem(viagem);            
                 lanceDAO.create(lance);
             }
-//            statement.execute("COMMIT");
-//        } catch (SQLException e) {
-//            statement.execute("ROLLBACK");
-//        }        
-//        statement.close();
+            statement.execute("COMMIT");
+        } catch (SQLException e) {
+            statement.execute("ROLLBACK");
+        }        
+        statement.close();
         preparedStatement.close();
         conexao.close();
     }
