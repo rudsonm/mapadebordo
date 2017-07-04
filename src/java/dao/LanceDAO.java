@@ -79,17 +79,17 @@ public class LanceDAO implements IDataAccessObject<Lance> {
         List<Lance> lances = new ArrayList<>();
         
         while ( result.next() ){
-        Lance lance = new Lance();
-        lance.setId(result.getInt("id"));
-        // timestamp to datetime data_inicio
-        // timestamp to datetime data_termino
-        lance.setComprimentoRede(result.getFloat("comprimento_rede"));
-        lance.setAlturaRede(result.getFloat("altura_rede"));
-        lance.setTamanhoMalha(result.getFloat("tamanho_malha"));
-        lance.setProfundidade(result.getFloat("profundidade"));
-        lance.setLatitude(result.getFloat("latitude"));
-        lance.setLongitude(result.getFloat("longitude"));
-        lances.add(lance);
+            Lance lance = new Lance();
+            lance.setId(result.getInt("id"));
+            // timestamp to datetime data_inicio
+            // timestamp to datetime data_termino
+            lance.setComprimentoRede(result.getFloat("comprimento_rede"));
+            lance.setAlturaRede(result.getFloat("altura_rede"));
+            lance.setTamanhoMalha(result.getFloat("tamanho_malha"));
+            lance.setProfundidade(result.getFloat("profundidade"));
+            lance.setLatitude(result.getFloat("latitude"));
+            lance.setLongitude(result.getFloat("longitude"));
+            lances.add(lance);
         }
         
         return lances;

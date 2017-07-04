@@ -24,7 +24,7 @@ import javax.ws.rs.core.MediaType;
 @Path("viagens")
 public class ViagemController {
     
-    private IDataAccessObject viagemDAO;
+    private IDataAccessObject<Viagem> viagemDAO;
     
     public ViagemController() {
         viagemDAO = new ViagemDAO();
@@ -57,7 +57,6 @@ public class ViagemController {
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Viagem getOne(@PathParam("id") int id) throws Exception {
-        Viagem viagem = (Viagem) viagemDAO.getOne(id);
-        return viagem;
+        return viagemDAO.getOne(id);
     }
 }
