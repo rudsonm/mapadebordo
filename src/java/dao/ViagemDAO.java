@@ -109,7 +109,7 @@ public class ViagemDAO implements IDataAccessObject<Viagem> {
         viagem.setEmbarcacao(embarcacao);
         
         LanceDAO lanceDAO = new LanceDAO(conexao);
-        Collection<Lance> lances = lanceDAO.getByViagem(viagem.getId());
+        List<Lance> lances = lanceDAO.getByViagem(viagem.getId());
         viagem.setLances(lances);
         statement.close();
         conexao.close();

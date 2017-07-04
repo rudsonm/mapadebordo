@@ -70,13 +70,13 @@ public class LanceDAO implements IDataAccessObject<Lance> {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public Collection<Lance> getByViagem(int viagem) throws Exception {
+    public List<Lance> getByViagem(int viagem) throws Exception {
         
         Statement statement = conexao.getConexao().createStatement();
         String sql = "select * from lance where viagem_id = "+viagem;
         ResultSet result = statement.executeQuery(sql);
         
-        Collection<Lance> lances = new ArrayList<>();
+        List<Lance> lances = new ArrayList<>();
         
         while ( result.next() ){
         Lance lance = new Lance();

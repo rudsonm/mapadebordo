@@ -20,7 +20,7 @@ public class Viagem {
     private Porto origem;
     private Porto destino;
     private Embarcacao embarcacao;
-    private Collection<Lance> lances;
+    private List<Lance> lances;
 
     public int getId() {
         return id;
@@ -74,7 +74,7 @@ public class Viagem {
         return lances;
     }
 
-    public void setLances(Collection<Lance> lances) {
+    public void setLances(List<Lance> lances) {
         this.lances = lances;
     }
     
