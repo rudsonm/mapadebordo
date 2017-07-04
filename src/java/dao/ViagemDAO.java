@@ -108,11 +108,11 @@ public class ViagemDAO implements IDataAccessObject<Viagem> {
         viagem.setDataSaida(result.getDate("data_chegada"));
         
         PortoDAO portoDAO = new PortoDAO(conexao);
-        Porto porto = portoDAO.getOne(result.getInt("porto_origem_id"));
-        viagem.setOrigem(porto);
+        Porto origem = portoDAO.getOne(result.getInt("porto_origem_id"));
+        viagem.setOrigem(origem);
         
-        porto = portoDAO.getOne(result.getInt("porto_destino_id"));
-        viagem.setDestino(porto);
+        Porto destino = portoDAO.getOne(result.getInt("porto_destino_id"));
+        viagem.setDestino(destino);
         
         EmbarcacaoDAO embarcacaoDAO = new EmbarcacaoDAO(conexao);
         Embarcacao embarcacao = embarcacaoDAO.getOne(result.getInt("embarcadao_id"));
@@ -121,8 +121,6 @@ public class ViagemDAO implements IDataAccessObject<Viagem> {
         LanceDAO lanceDAO = new LanceDAO(conexao);
         List<Lance> lances = lanceDAO.getByViagem(viagem.getId());
         viagem.setLances(lances);
-        
-        System.out.println(viagem.getLances().size());
         
         statement.close();
         conexao.close();

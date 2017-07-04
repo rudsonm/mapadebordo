@@ -43,8 +43,13 @@
             controller: "ViagemController",
             controllerAs: "viagemVm"
         })
+        .when("/viagens/:id", {
+            templateUrl: "views/viagem/cadastro.html",
+            controller: "ViagemController",
+            controllerAs: "viagemVm"
+        })
         .otherwise({
-            redirectTo: "/viagens/cadastro"
+            redirectTo: "/viagens"
         });
     });
     

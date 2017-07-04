@@ -143,6 +143,7 @@
                         <div class="input-field col s12 m8">
                             <select id="CapturaEspecie{{$index}}" data-ng-model="captura.especie">
                                 <option data-ng-repeat="especie in viagemVm.especies"
+                                        data-ng-selected="captura.especie.id === especie.id"
                                         data-ng-value="especie">{{especie.nome}}</option>
                             </select>
                             <label for="CapturaEspecie{{$index}}">Espécie</label>

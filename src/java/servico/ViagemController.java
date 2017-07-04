@@ -6,7 +6,9 @@
 package servico;
 
 import dao.IDataAccessObject;
+import dao.LanceDAO;
 import dao.ViagemDAO;
+import dominio.Lance;
 import dominio.Viagem;
 import java.util.List;
 import javax.ws.rs.Consumes;
@@ -58,5 +60,13 @@ public class ViagemController {
     @Produces(MediaType.APPLICATION_JSON)
     public Viagem getOne(@PathParam("id") int id) throws Exception {
         return viagemDAO.getOne(id);
+    }
+    
+    @GET
+    @Path("{id}/lances")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Lance> getLances(@PathParam("id") int id) throws Exception {
+        LanceDAO lanceDAO = new LanceDAO();
+        return lanceDAO.getByViagem(id);
     }
 }

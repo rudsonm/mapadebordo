@@ -11,7 +11,7 @@
             var files = document.getElementById("EspecieImagens").files;
             for (var i = 0; i < files.length; i++)  
                 especieVm.files.push(_serializarImagem(files[i]));
-            return console.log(especieVm.files);
+            console.log(especieVm.files);
             $http.post("http://localhost:8080/mapadebordo/api/especies", especie).then(function(response) {
                 window.location.href = "#!/especies";
             });

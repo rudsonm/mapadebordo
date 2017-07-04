@@ -25,7 +25,7 @@
                     <tr data-ng-repeat="porto in portoVm.portos | filter: portoVm.filtro.nome | orderBy: 'nome'">
                         <td>{{porto.nome}}</td>
                         <td>{{porto.administracao}}</td>
-                        <td>{{porto.anofundacao}}</td>
+                        <td>{{porto.anoFundacao}}</td>
                         <td class="right-align">
                             <i class="material-icons icon red-icon" title="Remover" data-ng-click="portoVm.remover(porto)">delete</i>
                         </td>

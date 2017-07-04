@@ -1,5 +1,5 @@
 (function() {
-    angular.module("MapaDeBordo").controller("ViagemController", function($http) {
+    angular.module("MapaDeBordo").controller("ViagemController", function($http, $route) {
         var viagemVm = this;
         viagemVm.viagem = {lances: []};
         viagemVm.template = 'lista';
@@ -32,8 +32,20 @@
         };
         
         function _buscarViagem(id) {
+            var requisicoes = 0;
             $http.get("http://localhost:8080/mapadebordo/api/viagens/"+id).then(function(response) {
                 viagemVm.viagem = response.data;
+                $http.get("http://localhost:8080/mapadebordo/api/viagens/"+id+"/lances").then(function(response) {
+                    viagemVm.viagem.lances = response.data;                    
+                    viagemVm.viagem.lances.forEach(function(lance) {
+                        requisicoes++;
+                        $http.get("http://localhost:8080/mapadebordo/api/lances/"+lance.id+"/capturas").then(function(response) {
+                            lance.capturas = response.data;
+                            if(--requisicoes === 0)
+                                $('select').material_select();
+                        });
+                    });
+                });
             });
         };
         
@@ -69,11 +81,16 @@
             return tmp[2] + "-" + tmp[1] + "-" + tmp[0];
         }
         
-        function _init() {
+        function _init() {            
             _buscarEmbarcacoes();
             _buscarEspecies();
             _buscarPortos();
             _buscarViagens();
+            
+            var id = $route.current.params.id;
+            if(id)
+                _buscarViagem(id);
+            
             $(document).ready(function() {
                $('.datepicker').pickadate({
                     selectMonths: true,
